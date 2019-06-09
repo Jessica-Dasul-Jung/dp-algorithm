@@ -1,0 +1,22 @@
+/*
+  Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
+*/
+
+class Solution {
+public:
+    string toLowerCase(string str) {
+        int size = str.size();
+        int i;
+        for (i = 0; i < size; i++) {
+            str[i] = tolower(str[i]);
+        }
+        return str;
+        
+    }
+};
+
+/*
+  Result:
+    Runtime: 0 ms
+    Memory Usage: 8.3 MB
+*/
