@@ -1,0 +1,25 @@
+/*
+  The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, 
+  such that each number is the sum of the two preceding ones, starting from 0 and 1. 
+  Given N, calculate F(N).
+*/
+
+class Solution {
+public:
+    int fib(int N) {
+        unordered_map<int, int> fib;
+        fib[0] = 0;
+        fib[1] = 1;
+        int i;
+        for (i = 2; i <= N; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        return fib[N];
+    }
+};
+
+/* 
+  Result:
+    Runtime: 0 ms
+    Memory Usage: 8.3 MB
+*/
