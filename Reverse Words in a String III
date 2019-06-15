@@ -1,0 +1,41 @@
+/*
+  Given a string, you need to reverse the order of characters 
+  in each word within a sentence while still preserving whitespace and initial word order.
+*/
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        int size = s.size();
+        int start = 0;
+        int itr, i, j;
+        for (i = 0; i < size; i++) {
+            if (s[i] == ' ') {
+                //start of new word (index), i = whitespace
+                itr = (i - start) / 2;
+                for (j = 0; j < itr; j++) {
+                    char temp = s[i - j - 1];
+                    s[i - j - 1] = s[start];
+                    s[start] = temp;
+                    start++;
+                }
+                start = i + 1;
+            }
+        }
+        itr = (size - start) / 2;
+        for (j = 0; j < itr; j++) {
+            char temp = s[size - j - 1];
+            s[size - j - 1] = s[start];
+            s[start] = temp;
+            start++;
+        }    
+        return s;
+    }
+};
+
+
+/*
+  Result:
+    Runtime: 24 ms
+    Memory Usage: 11.7 MB
+*/
