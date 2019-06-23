@@ -1,0 +1,38 @@
+/*
+  Given a binary search tree, rearrange the tree in in-order so that the leftmost node 
+  in the tree is now the root of the tree, and every node has no left child and only 1 right child.
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* increasingBST(TreeNode* root) {
+        if (root == nullptr) {
+            return root;
+        }
+        increasingBST(root->left);
+        if (ret == nullptr) {
+            ret = root;
+            cur = ret;
+        }
+        else {
+            cur->right = new TreeNode(root->val);
+            cur = cur->right;
+        }
+        increasingBST(root->right);
+        return ret;
+    }
+    
+    
+private:
+    TreeNode* ret;
+    TreeNode* cur;
+};
