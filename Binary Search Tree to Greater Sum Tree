@@ -1,0 +1,32 @@
+/*
+  Given the root of a binary search tree with distinct values, modify it 
+  so that every node has a new value equal to the sum of the values of the original 
+  tree that are greater than or equal to node.val.
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* bstToGst(TreeNode* root) {
+        if (!root) {
+            return nullptr;
+        }
+        bstToGst(root->right);
+        temp = root->val;
+        root->val += sum;
+        sum += temp;
+        bstToGst(root->left);
+        return root;
+    }
+private:
+    int sum = 0;
+    int temp;
+};
