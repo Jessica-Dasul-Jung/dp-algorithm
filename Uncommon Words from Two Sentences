@@ -1,0 +1,35 @@
+/*
+  We are given two sentences A and B.  (A sentence is a string of space separated words.  Each word consists only of lowercase letters.)
+  A word is uncommon if it appears exactly once in one of the sentences, and does not appear in the other sentence.
+  Return a list of all uncommon words. 
+  You may return the list in any order.
+*/
+
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string A, string B) {
+        vector<string> words;
+        string C = A + " " + B;
+        int size = C.length();
+        int i;
+        string word = "";
+        unordered_map<string, int> freq;
+        
+        for (i = 0; i < size; i++) {
+            if (C[i] == ' ') {
+                freq[word]++;
+                word = "";
+            }
+            else word += C[i];
+        }
+        freq[word]++;
+        
+        vector<string> ret;
+        for (auto it : freq) {
+            if (it.second == 1) {
+                ret.push_back(it.first);
+            }
+        }
+        return ret;
+    }
+};
