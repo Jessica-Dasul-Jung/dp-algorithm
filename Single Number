@@ -1,0 +1,37 @@
+/*
+  Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+*/
+
+class Solution1 {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_map<int, int> freq;
+        int i;
+        int size = nums.size();
+        for (i = 0; i < size; i++) {
+            freq[nums[i]]++;
+        }
+        for (auto c: freq) {
+            if (c.second == 1) {
+                return c.first;
+            }
+        }
+        return -1;
+    }
+};
+
+/*
+  XOR returns 0 if operating numbers are equal. 
+*/
+class Solution2 {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ret = 0;
+        int i;
+        int size = nums.size();
+        for (i = 0; i < size; i++) {
+            ret ^= nums[i];
+        }
+        return ret;
+    }
+};
