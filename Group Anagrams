@@ -1,0 +1,22 @@
+/*
+  Given an array of strings, group anagrams together.
+*/
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> ret;
+        unordered_map<string, vector<string>> freq;
+        int size = strs.size();
+        int i;
+        string unsorted;
+        for (i = 0; i < size; i++) {
+            unsorted = strs[i];
+            sort(strs[i].begin(), strs[i].end());
+            freq[strs[i]].push_back(unsorted);
+        }
+        for (auto s: freq) {
+            ret.push_back(s.second);
+        }
+        return ret;
+    }
+};
