@@ -1,0 +1,25 @@
+/*
+  An array is monotonic if it is either monotone increasing or monotone decreasing.
+  An array A is monotone increasing if for all i <= j, A[i] <= A[j].  
+  An array A is monotone decreasing if for all i <= j, A[i] >= A[j].
+  Return true if and only if the given array A is monotonic.
+*/
+
+class Solution {
+public:
+    bool isMonotonic(vector<int>& A) {
+        int size = A.size();
+        size--; //size becomes last index
+        bool inc = (A[0] < A[size]) ? true : false;
+        int i;
+        for (i = 0; i < size; i++) {
+            if (inc && A[i] > A[i+1]) { //decreasing
+                return false;
+            }
+            else if (!inc && A[i] < A[i+1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
