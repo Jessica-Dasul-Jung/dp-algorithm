@@ -1,0 +1,50 @@
+/*
+  Given a string S, return the "reversed" string 
+  where all characters that are not a letter stay in the same place, and all letters reverse their positions.
+*/
+
+class Solution1 {
+public:
+    string reverseOnlyLetters(string S) {
+        int high = S.size() - 1;
+        int low = 0;
+        while (high > low) {
+            if (!isalpha(S[high])) {
+                high--;
+            }
+            else if (!isalpha(S[low])) {
+                low++;
+            }
+            else {
+                swap(S[high], S[low]);
+                high--;
+                low++;
+            }
+        }
+        return S;
+    }
+};
+
+class Solution2 {
+public:
+    string reverseOnlyLetters(string S) {
+        string letters = "";
+        vector<int> index;
+        int length = S.length();
+        int i;
+        for (i = 0; i < length; i++) {
+            if (isalpha(S[i])) {
+                index.push_back(i);
+                letters += S[i];
+            }
+        }
+        length = letters.length();
+        int idx = 0;
+        for (i = length - 1; i >= 0; i--) {
+            S[index[idx]] = letters[i];
+            idx++;
+        }
+        return S;
+    }
+};
+
