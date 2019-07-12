@@ -1,0 +1,39 @@
+/*
+  In a array A of size 2N, there are N+1 unique elements, and exactly one of these elements is repeated N times.
+  Return the element repeated N times.
+*/
+
+class Solution1 {
+public:
+    int repeatedNTimes(vector<int>& A) {
+        unordered_set<int> elem;
+        int size = A.size();
+        int i;
+        for (i = 0; i < size; i++) {
+            if (elem.find(A[i]) == elem.end()) {
+                elem.insert(A[i]);
+            }
+            else return A[i];
+        }
+        return -1;
+    }
+};
+
+class Solution2 {
+public:
+    int repeatedNTimes(vector<int>& A) {
+        int size = A.size();
+        int N = size / 2;
+        unordered_map<int,int> freq;
+        int i;
+        for (i = 0; i < size; i++) {
+            freq[A[i]]++;
+        }
+        for (auto n : freq) {
+            if (n.second == N) {
+                return n.first;
+            }
+        }
+        return -1;
+    }
+};
