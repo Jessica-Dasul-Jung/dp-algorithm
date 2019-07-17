@@ -1,0 +1,32 @@
+
+DFS(s): 
+    Initialize S to be a stack with one element s
+    While S is not empty:
+        Take a node u from S
+        If explored[u] = false then:
+            set explored[u] = true
+            For each edge (u,v) incident to u:
+                add v to the stack S
+            EndFor
+        EndIf
+    EndWhile
+  
+C++ equivalent:
+void DFS(int s); 
+    vector<bool> visited (false);
+    stack<int> stack;
+    while (!stack.empty()) {
+        s = stack.top();
+        stack.pop();
+        //check if the node is visited
+        if (!visited[s]) {
+            visited[s] = true;
+            //do sth
+        }
+        //receive all adjacent vertices
+        for (auto i = adj[s].begin(); i != adj[s].end(); ++i) 
+            if (!visited[*i]) 
+                stack.push(*i);  
+        } 
+    }
+}
