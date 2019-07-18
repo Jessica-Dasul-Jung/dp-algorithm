@@ -1,0 +1,24 @@
+
+Shift Operations:
+    LEFT SHIFT: x << y
+        shift bit-vector x left y position
+        throw away extra bits on left
+        fill with 0's on right
+        multiply by 2
+    RIGHT SHIFT: x >> y
+        shift bit-vector x right y positions
+        throw away extra bits on right
+        logical shift: fill with 0's on left
+        arithmetic shift: replicate most significant bit on right
+        divide by 2
+    AND: &
+        1 : both operands are 1
+    
+    OR: |
+    EXCLUSIVE OR: ^
+    COMPLEMENT: ~
+d
+        
+    
+    d
+d    
