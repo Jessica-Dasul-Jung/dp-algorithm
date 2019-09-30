@@ -1,0 +1,22 @@
+
+
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        //opt[i][j] = # of ways in which a robot can reach (i, j) position
+        int opt[n][m];         
+        int i, j;
+        for (i = 0; i < n; i++) {
+            opt[i][0] = 1;
+        }
+        for (i = 0; i < m; i++) {
+            opt[0][i] = 1;
+        }
+        for (i = 1; i < n; i++) {
+            for (j = 1; j < m; j++) {
+                opt[i][j] = opt[i - 1][j] + opt[i][j - 1];
+            }
+        }
+        return opt[n - 1][m - 1];
+    }
+};
