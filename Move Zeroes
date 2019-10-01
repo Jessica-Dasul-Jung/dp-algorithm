@@ -1,0 +1,21 @@
+Given an array nums, write a function to move all 0's to the end of it while maintaining 
+the relative order of the non-zero elements.
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int pos = 0;
+        int i;
+        int size = nums.size();
+        for (i = 0; i < size; i++) {
+            if (nums[i] != 0) {
+                nums[pos] = nums[i];
+                pos++;
+            }
+        }
+        while (pos < size) {
+            nums[pos] =  0;
+            pos++;
+        }
+    }
+};
