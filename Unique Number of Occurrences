@@ -1,0 +1,19 @@
+Given an array of integers arr, write a function that returns true 
+if and only if the number of occurrences of each value in the array is unique.
+
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        set<int> unique_occ;
+        map<int, int> occ;
+        int size = arr.size();
+        int i;
+        for (i = 0; i < size; i++) {
+            occ[arr[i]]++;
+        }
+        for (auto i : occ) {
+            unique_occ.insert(i.second);
+        }
+        return (unique_occ.size() == occ.size());
+    }
+};
