@@ -6,7 +6,7 @@ a < b
 b - a equals to the minimum absolute difference of any two elements in arr
  
 
-class Solution {
+class Solution1 {
 public:
     vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
         sort(arr.begin(), arr.end());
@@ -21,5 +21,28 @@ public:
             diff_map[arr[i] - arr[i - 1]].push_back(elem);
         }
         return (diff_map.begin()->second);
+    }
+};
+
+class Solution2 {
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+        sort(arr.begin(), arr.end());
+        int i;
+        int size = arr.size();
+        int min_diff = arr[1] - arr[0];
+        for (i = 2; i < size; i++) {
+            min_diff = min(min_diff, arr[i] - arr[i - 1]);
+        }
+        vector<vector<int>> ret;
+        for (i = 1; i < size; i++) {
+            if (arr[i] - arr[i - 1] == min_diff) {
+                vector<int> elem;
+                elem.push_back(arr[i - 1]);
+                elem.push_back(arr[i]);
+                ret.push_back(elem);
+            }
+        }
+        return ret;
     }
 };
