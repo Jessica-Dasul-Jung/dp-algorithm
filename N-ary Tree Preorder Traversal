@@ -1,0 +1,34 @@
+Given an n-ary tree, return the preorder traversal of its nodes' values.
+
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> children;
+
+    Node() {}
+
+    Node(int _val, vector<Node*> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+class Solution {
+public:
+    vector<int> preorder(Node* root) {
+        if (!root) {
+            return m_ret;
+        }
+        m_ret.push_back(root->val);
+        int size = root->children.size();
+        int i;
+        for (i = 0; i < size; i++) {
+            preorder(root->children[i]);
+        }
+        return m_ret;
+    }
+private:
+    vector<int> m_ret;
+};
