@@ -19,3 +19,19 @@ public:
         return maxProfit;
     }
 };
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int size = prices.size();
+        int i;
+        int minBuy = INT_MAX;
+        int maxProfit = 0;
+        for (i = 0; i < size; i++) {
+            maxProfit = max (maxProfit, prices[i] - minBuy);
+            minBuy = min(minBuy, prices[i]);
+        }
+        return maxProfit;
+    }
+};
