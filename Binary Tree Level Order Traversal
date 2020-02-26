@@ -9,6 +9,16 @@ Given a binary tree, return the level order traversal of its nodes' values. (ie,
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
@@ -16,30 +26,29 @@ public:
         if (!root) {
             return ret;
         }
-        queue<TreeNode*> q;
-        TreeNode* temp = root;
+        queue<TreeNode*> q; //holds the current processing layer
         int i, size;
-        vector<int> root_vec;
-        root_vec.push_back(root->val);
-        ret.push_back(root_vec);
+        TreeNode* temp = root;
         q.push(root);
+        
         while (!q.empty()) {
             size = q.size();
             vector<int> layer;
             for (i = 0; i < size; i++) {
                 temp = q.front();
                 q.pop();
+                layer.push_back(temp->val);
+                
+                //initializes subsequent layer
                 if (temp->left) {
                     q.push(temp->left);
-                    layer.push_back(temp->left->val);
                 }
                 if (temp->right) {
                     q.push(temp->right);
-                    layer.push_back(temp->right->val);
                 }
             }
             ret.push_back(layer);
         }
-        return vector<vector<int>> (ret.begin(), ret.end() - 1);
+        return ret;
     }
 };
