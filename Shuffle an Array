@@ -1,0 +1,32 @@
+class Solution {
+public:
+    Solution(vector<int>& nums) {
+        m_nums = nums;
+    }
+    
+    /** Resets the array to its original configuration and return it. */
+    vector<int> reset() {
+        return m_nums;
+    }
+    
+    /** Returns a random shuffling of the array. */
+    vector<int> shuffle() {
+        vector<int> ret = m_nums;
+        int size = m_nums.size();
+        int i, idx;
+        for (i = 0; i < size; i++) {
+            idx = rand() % (size - i);
+            swap(ret[i + idx], ret[i]);
+        }
+        return ret;
+    }
+private:
+    vector<int> m_nums;
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution* obj = new Solution(nums);
+ * vector<int> param_1 = obj->reset();
+ * vector<int> param_2 = obj->shuffle();
+ */
