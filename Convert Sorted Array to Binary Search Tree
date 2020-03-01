@@ -32,3 +32,32 @@ public:
         return ret;        
     }
 };
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* arrayToBST(int low, int high, vector<int>& nums) {
+        if (low > high) {
+            return nullptr;
+        }
+        int mid = (low + high) / 2;
+        TreeNode* elem = new TreeNode(nums[mid]);
+        elem->left = arrayToBST(low, mid - 1, nums);
+        elem->right = arrayToBST(mid + 1, high, nums);
+        return elem;
+        
+    }
+    
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        return arrayToBST(0, nums.size() - 1, nums);        
+    }
+};
